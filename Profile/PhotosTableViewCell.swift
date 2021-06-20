@@ -24,7 +24,7 @@ class PhotosTableViewCell: UITableViewCell {
     class ReloadAlertThread: Thread {
         
         let timer = Timer(timeInterval: 1, repeats: true) { (_) in
-            print("Timer!")
+            print("Timer")
         }
         
         override func main() {

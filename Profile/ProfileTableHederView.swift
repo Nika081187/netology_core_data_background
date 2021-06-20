@@ -23,7 +23,7 @@ class ProfileTableHederView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("coder!")
+        fatalError("coder")
     }
         
     private lazy var cont: UIView = {
@@ -84,7 +84,7 @@ class ProfileTableHederView: UIView {
     }()
     
     @objc func buttonPressed() {
-        print("Status button pressed: \(statusTextField.text!)")
+        print("Нажали статус")
     }
     
     func setupLayout() {

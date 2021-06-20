@@ -57,7 +57,7 @@ final class FeedViewController: UIViewController {
             self.hour = self.calendar.component(.hour, from: self.date)
             self.minutes = self.calendar.component(.minute, from: self.date)
             self.second = self.calendar.component(.second, from: self.date)
-            print("Активирован бекграунд режим! \(self.hour) \(self.minutes) \(self.second)")
+            print("Активирован бекграунд режим \(self.hour) \(self.minutes) \(self.second)")
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
@@ -81,36 +81,6 @@ final class FeedViewController: UIViewController {
         hour = calendar.component(.hour, from: date)
         minutes = calendar.component(.minute, from: date)
         second = calendar.component(.second, from: date)
-        print("Приложение активировано! \(hour) \(minutes) \(second)")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(type(of: self), #function)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print(type(of: self), #function)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print(type(of: self), #function)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print(type(of: self), #function)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        print(type(of: self), #function)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print(type(of: self), #function)
+        print("Приложение активировано \(hour) \(minutes) \(second)")
     }
 }

@@ -59,6 +59,6 @@ class TopHeaderView: UIView {
     }
     
     @objc func buttonPressed(){
-        print("Status button pressed: \(statusText.text!)")
+        print("Нажали статус")
     }
 }

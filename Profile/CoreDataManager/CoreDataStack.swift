@@ -27,42 +27,68 @@ final class CoreDataStack {
         return container
     }()
     
-    func getContext()  -> NSManagedObjectContext {
-        persistentStoreContainer.viewContext
+    func getContext() -> NSManagedObjectContext {
+        persistentStoreContainer.newBackgroundContext()
     }
     
-    
-    func save(context: NSManagedObjectContext) {
-       if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                print(error.localizedDescription)
+    func save() {
+        let context = getContext()
+        
+        context.performAndWait {
+            if context.hasChanges {
+                do {
+                    try context.save()
+                    context.reset()
+                } catch {
+                    context.rollback()
+                }
             }
         }
+
     }
     
-    func createObject<T: NSManagedObject> (from entity: T.Type) -> T {
-        let context = getContext()
-        let object = NSEntityDescription.insertNewObject(forEntityName: String(describing: entity), into: context) as! T
-        return object
+    func create<T: NSManagedObject> (from entity: T.Type, title: String) -> T? {
+        
+        let context = persistentStoreContainer.viewContext
+        
+        if !isExist(title: title, context: context) {
+            return NSEntityDescription.insertNewObject(forEntityName: String(describing: entity), into: context) as? T
+        }
+        return nil
     }
     
     func delete(object: NSManagedObject) {
-        let context = getContext()
+        let context = persistentStoreContainer.viewContext
         context.delete(object)
-        save(context: context)
+        save()
     }
     
-    func fetchData<T: NSManagedObject>(for entity: T.Type) -> [T] {
-        let context = getContext()
+    func fetchData<T: NSManagedObject>(for entity: T.Type, predicate: NSPredicate?) -> [Post] {
+        let taskContext = persistentStoreContainer.viewContext
+        
+        taskContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        taskContext.undoManager = nil
+
         let entityName = String(describing: T.self)
         let request = NSFetchRequest<T>(entityName: entityName)
-        
+        request.predicate = predicate
+
         do {
-            return try context.fetch(request)
+            let posts = try taskContext.fetch(request) as! [Post]
+            return posts
         } catch {
             fatalError()
         }
+    }
+    
+    private func isExist(title: String, context: NSManagedObjectContext) -> Bool {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Post")
+        fetchRequest.predicate = NSPredicate(format: "title = %s", argumentArray: [title])
+
+        let res = try? context.fetch(fetchRequest)
+        guard let result = res else {
+            return false
+        }
+        return result.count > 0 ? true : false
     }
 }

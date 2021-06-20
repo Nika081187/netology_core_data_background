@@ -46,12 +46,12 @@ class PhotosViewController: UIViewController {
     }
     
     @objc func timerDidFire() {
-        print("Timer!")
+        print("Timer")
         showReloadAlert()
     }
     
     func showReloadAlert() {
-        let alertController = UIAlertController(title: "Время отдохнуть!", message: "Вы очень долго находитесь на странице, нужно дать отдых глазам! :)", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Время отдохнуть", message: "Вы очень долго находитесь на странице, нужно дать отдых глазам :)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ок", style: .default) { _ in
             print("Ок")
         }

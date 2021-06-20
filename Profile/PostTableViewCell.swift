@@ -21,10 +21,13 @@ class PostTableViewCell: UITableViewCell {
     
     public func configureViaCoreData(post: Post){
         nameLabel.text = post.author
-        postImage.image = UIImage(data: post.image!) 
         descriptionLabel.text = post.title
         likesLabel.text = "Likes: \(post.likes)"
         viewsLabel.text = "Views: \(post.views)"
+        guard let image = post.image else {
+            return
+        }
+        postImage.image = UIImage(data: image)
     }
 
     public lazy var nameLabel: UILabel = {
