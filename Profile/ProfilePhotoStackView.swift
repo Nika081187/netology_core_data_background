@@ -31,7 +31,7 @@ class ProfilePhotoStackView: UIView {
     }()
     
     @objc func buttonPressed() {
-        print("Arrow button pressed")
+        print("Нажали стрелку Ко всем фото")
         let root = findViewController()
         root!.navigationController?.pushViewController(PhotosViewController(), animated: false)
     }
@@ -75,7 +75,7 @@ class ProfilePhotoStackView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("coder!")
+        fatalError()
     }
     
     func setupLayout() {

@@ -173,7 +173,7 @@ class LogInViewController: UIViewController {
     }()
     
     @objc func buttonPressed() {
-        print("Log in button pressed")
+        print("Нважали кнопку Log in")
         self.navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
 }

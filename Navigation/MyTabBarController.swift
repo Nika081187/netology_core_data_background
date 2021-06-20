@@ -11,6 +11,8 @@ import UIKit
 @available(iOS 13.0, *)
 class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     
+    private let coreDataManager = CoreDataStack(modelName: "PostModel")
+    
     private lazy var updateLabel: UILabel = {
         let label = UILabel()
         label.toAutoLayout()
@@ -41,8 +43,8 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let item1 = FeedViewController()
-        let item2 = ProfileViewController(title: "Profile")
-        let item3 = UINavigationController(rootViewController: ProfileViewController(withCoreData: true, title: "Favorites"))
+        let item2 = ProfileViewController(title: "Profile", manager: coreDataManager)
+        let item3 = UINavigationController(rootViewController: ProfileViewController(withCoreData: true, title: "Favorites", manager: coreDataManager))
         
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemBlue], for: .selected)
         
@@ -53,7 +55,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        print("Should select viewController: \(viewController.title ?? "") ?")
+        print("Выбранная вкладка: \(viewController.title ?? "")")
         return true;
     }
     

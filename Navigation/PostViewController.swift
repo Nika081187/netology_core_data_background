@@ -21,7 +21,7 @@ class PostViewController: UIViewController {
     }()
 
     @objc func addPostPressed(){
-        print("add post!")
+        print("Добавляем пост")
         let vc = InfoViewController()
         vc.modalPresentationStyle = .popover
         vc.navigationController?.isToolbarHidden = true
