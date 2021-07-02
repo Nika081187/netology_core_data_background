@@ -56,6 +56,9 @@
 		28CAD53B257B7AFF005F72DE /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAD53A257B7AFF005F72DE /* PostTableViewCell.swift */; };
 		28CAD542257BC554005F72DE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAD541257BC554005F72DE /* Storage.swift */; };
 		28E5B7D0256168A0000FE56E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5B7CF256168A0000FE56E /* ProfileViewController.swift */; };
+		28E82592268ED91E006B085E /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28810E42265F7FBD00399F47 /* Post+CoreDataClass.swift */; };
+		28E82593268ED921006B085E /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28810E43265F7FBD00399F47 /* Post+CoreDataProperties.swift */; };
+		28E82594268ED924006B085E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28810E4D265F804E00399F47 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -313,13 +316,16 @@
 				280B8D3825D59F4F00A798FD /* FeedCoordinator.swift in Sources */,
 				284AE2F525B0C49E00027E09 /* MyTabBarController.swift in Sources */,
 				284AE2F625B0C49E00027E09 /* PhotosTableViewCell.swift in Sources */,
+				28E82593268ED921006B085E /* Post+CoreDataProperties.swift in Sources */,
 				280B8D3325D5958400A798FD /* AppCoordinator.swift in Sources */,
 				280B8D3D25D59F7500A798FD /* ProfileCoordinator.swift in Sources */,
 				284AE2F725B0C49E00027E09 /* AppDelegate.swift in Sources */,
 				284AE2F825B0C49E00027E09 /* InfoViewController.swift in Sources */,
 				284AE2F925B0C49E00027E09 /* PhotoStorage.swift in Sources */,
 				284AE2FA25B0C49E00027E09 /* ProfileViewController.swift in Sources */,
+				28E82594268ED924006B085E /* CoreDataStack.swift in Sources */,
 				284AE2FB25B0C49E00027E09 /* PhotosViewController.swift in Sources */,
+				28E82592268ED91E006B085E /* Post+CoreDataClass.swift in Sources */,
 				284AE2FC25B0C49E00027E09 /* ProfilePhotoStackView.swift in Sources */,
 				284AE2FD25B0C49E00027E09 /* TopHeaderView.swift in Sources */,
 				284AE2FF25B0C49E00027E09 /* LogInViewController.swift in Sources */,
